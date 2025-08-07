@@ -1,3 +1,4 @@
+import LoginForm from "@/components/LoginForm"
 import loginBg from "../../public/login-bg.jpg"
 
 export default function Home(){
@@ -14,7 +15,7 @@ export default function Home(){
       <div className="absolute inset-0 bg-[#111418]/90 backdrop-blur-sm"></div>
 
       <div className="relative z-10 w-full px-4">
-
+        <LoginForm/>
       </div>
     </div>
   )
