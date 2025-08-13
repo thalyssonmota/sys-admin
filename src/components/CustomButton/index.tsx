@@ -1,19 +1,35 @@
-
 type CustomButtonProps = {
-  variant?: "primary",
-  text?: string,
-  type?: "button" | "submit" | "reset",
-  className?: string
-}
-
+  variant?: "primary" | "outline";
+  type?: "button" | "submit" | "reset";
+  className?: string;
+  children?: React.ReactNode;
+};
 
 export default function CustomButton({
-  variant,
-  text,
+  variant = "primary",
   type = "button",
-  className
-}: CustomButtonProps){
-  return(
-    <button></button>
-  )
+  className,
+  children,
+}: CustomButtonProps) {
+  function getStyles() {
+    switch (variant) {
+      case "primary":
+        return "bg-gradient-to-r from-[#5593f7] to-[#1d4ed8] text-[#1f1f1f] hover:shadow-lg hover:shadow-[#4896ff26] transition-all duration-300 ease-in-out cursor-pointer";
+
+      case "outline":
+        return "border border-[#2c313a]/50 rounded-xl bg-[#111418] h-[45px] text-[#F1F2F3] font-medium flex items-center justify-center gap-4 transition-all duration-300 ease-in-out cursor-pointer";
+
+      default:
+        return "";
+    }
+  }
+
+  return (
+    <button
+      type={type}
+      className={`w-full rounded-lg text-lg font-medium ${getStyles()} ${className}`}
+    >
+      {children}
+    </button>
+  );
 }
